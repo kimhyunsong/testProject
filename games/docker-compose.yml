@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  mysql-server:
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 110100
+    volumes:
+      - ./db/conf.d:/etc/mysql/conf.d
+      - ./db/data:/var/lib/mysql
+      - ./db/initdb.d:/docker-entrypoint-initdb.d
+      - mysqldata:/var/lib/mysql
+    env_file: .env
+    networks:
+      - customNetwork
+    container_name: mysql_service
+
+  django-server:
+    build: .
+    command: python3 manage.py migrate && python manage.py runserver 0:8000 --noreload
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/django-server
+    depends_on:
+      - mysql-server
+    networks:
+      - customNetwork
+volumes:
+  mysqldata:
+
+networks:
+  customNetwork:
