@@ -11,6 +11,7 @@ class CricketConfig(AppConfig):
     name = 'cricket'
     
     def ready(self):
+        #interval: 5분
         interval_seconds = 300
         timer_thread = threading.Thread(target=interval_function, args=(interval_seconds,))
         timer_thread.daemon = True

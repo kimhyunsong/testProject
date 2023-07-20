@@ -20,14 +20,15 @@ def get_data():
         return date_obj
         
         # print(tt.group(1) + tt.group(2))
-
     for match in matches:
         info = match.find_all('div',"match-teams")
         start_time = match.find('div',attrs={"class": "match-meta"}).get_text()
         date = info[0].get_text().split(" ")
         date_time = setDateTime(date, start_time)
         teams = info[1].get_text()
-
+        # 데이터 조회 후 기존 데이터일 경우 skip
+        if ((Events.objects.filter(start_date=date_time, title=teams).exists())): continue
+        # 추가적인 변경 사항이 있을 경우 수정 로직 추가
         Events(title=teams, start_date=date_time).save()
-        print("t?")
+    print("complete")
     # date_time, teams
