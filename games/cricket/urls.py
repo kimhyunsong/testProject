@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("inquire/", views.get_matches),
+    path("inquire/", views.change_interval),
 ]

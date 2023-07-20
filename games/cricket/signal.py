@@ -4,4 +4,5 @@ from .models import Events
 
 @receiver( post_save, sender = Events )
 def events_post_save( sender, **kwargs ):
+    # 시그널로 자고있는 쓰레드에 알려줄 용도
     pass
