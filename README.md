@@ -23,6 +23,13 @@ npm install
 npm start
 
 
+
+# 시스템 아키텍처
+
+![image](https://github.com/kimhyunsong/testProject/assets/87460502/d243aeb8-1845-4d35-a813-78b8c7b22ae8)
+
+
+
 # 요구사항
 
 ## 1. 사용자가 종료하기 전까지 계속해서 이벤트 수집
