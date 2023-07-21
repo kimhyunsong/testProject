@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios"
-
-
+import CustomizedTables from "./components/table_box"
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 function App() {
   
   const [matches, setData] = useState([]) 
@@ -48,38 +49,22 @@ function App() {
 
 
   return (
-    
     <div>
-      <div className="flex-box">
-      <button onClick={get_data}>조회</button>
-      <input type="number"
-            onChange={changeSecond}></input> <button onClick={change_interval}>시간변경</button>
+      <div style={{ display:"flex", flexWrap:"wrap", justifyContent:"space-between", marginBottom: "20px"}}>
+      <Button variant="contained" onClick={get_data}>조회</Button>
+      <TextField
+          id="outlined-number"
+          label="Number"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={changeSecond}
+        /> <Button variant="contained" color="secondary" onClick={change_interval}>시간변경</Button>
       </div>
-      <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
-                </tr>
-              </thead>
-              <tbody>
       {
-        matches.length === 0 ? null : matches.map((res, i)=>
-        {
-          return (
-              <tr>
-                <th scope="row">{i}</th>
-                <td>{res.title}</td>
-                <td>{res.start_date}</td>
-                <td>{res.start_date}</td>
-              </tr>  
-          )
-        })
+        matches.length === 0 ? null : <CustomizedTables rows={matches}/>
       }
-      </tbody>
-      </table>
     </div>
   );
 }
