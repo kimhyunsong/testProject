@@ -1,25 +1,32 @@
+# 설명
+300초마다 주기적으로 특정 웹사이트의 정보를 크롤링하여 DB에 저장하는 프로그램 
+
+서버는 Django와 React 클라우드는 EC2를 사용하였음
+
+Docker Compose를 이용하여 컨테이너 관리
+
+
 # 시작하기
 
-
-## BE
+- BE
 
 git clone https://github.com/kimhyunsong/testProject.git
-### 가상환경
+- 가상환경
 python -m venv venv
 source venv/Script/activate
 
-### 마이그레이션 (로컬 실행 시)
+- 마이그레이션 (로컬 실행 시) 
+cd games
 python manage.py makemigrations
 python manage.py migrate
 
-### 서버 실행
+- 서버 실행
 
 python manage.py runserver 
 
-## FE
-
+- FE
+cd testProject\FE\my-app
 npm install
-
 npm start
 
 
